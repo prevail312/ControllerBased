@@ -12,26 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-	  - name: Setup .NET
-		  uses: actions/setup-dotnet@v3
-		  with: 
-		    dotnet-version: '8.0.x' 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with: 
+        dotnet-version: '8.0.x'
 
-		- name: Restore
-		    run: dotnet restore  ./ControllerBased.sln 
+    - name: Restore
+      run: dotnet restore  ./ControllerBased.sln 
 
-	  - name: Build
-		   run: dotnet build ./ControllerBased.sln --configuration Release --no-restore
+    - name: Build
+      run: dotnet build ./ControllerBased.sln --configuration Release --no-restore
 
-	  - name: Publish
-		  run: dotnet publish ./ControllerBased.sln --configuration Release --no-build
-
-	 
-		  
-		 
-		 
-		 
-		     
-		 		
-
-	 
+    - name: Publish
+      run: dotnet publish ./ControllerBased.sln --configuration Release --no-build
