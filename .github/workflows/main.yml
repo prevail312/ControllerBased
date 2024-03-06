@@ -1,7 +1,37 @@
-name:Publish
+name: Publish 
+
 on:
+  workflow_dispatch:
   push:
     branches:
-      - 'master'
-  pull_request:
-  workflow_dispatch:
+      - master'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+	  - name: Setup .NET
+		  uses: actions/setup-dotnet@v3
+		  with: 
+		    dotnet-version: '8.0.x' 
+
+		- name: Restore
+		    run: dotnet restore  ./ControllerBased.sln 
+
+	  - name: Build
+		   run: dotnet build ./ControllerBased.sln --configuration Release --no-restore
+
+	  - name: Publish
+		  run: dotnet publish ./ControllerBased.sln --configuration Release --no-build
+
+	 
+		  
+		 
+		 
+		 
+		     
+		 		
+
+	 
